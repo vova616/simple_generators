@@ -13,7 +13,7 @@ simple_generators = "0.1"
 
 example:
 
-```
+```rust
 #![feature(generators, generator_trait)]
 
 use simple_generators::*;
