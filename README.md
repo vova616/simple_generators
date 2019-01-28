@@ -1,6 +1,6 @@
 # simple_generators
 
-A library that contains a macro for a simpler generator creation
+A library that contains a macro for a simpler generator->iterator creation
 
 ## Usage
 
