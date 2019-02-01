@@ -11,7 +11,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-simple_generators = {version="0.1", git = "https://github.com/vova616/simple_generators"}
+simple_generators = {version="0.1.1", git = "https://github.com/vova616/simple_generators"}
 ```
 
 example:
