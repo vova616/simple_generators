@@ -4,6 +4,7 @@ A library that contains a macro for a simpler generator->iterator creation
 
 ## Usage
 
+Use latest nightly
 Didn't yet publish to crates.io so
 
 Add this to your `Cargo.toml`:

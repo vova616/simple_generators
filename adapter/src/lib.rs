@@ -1,17 +1,16 @@
 #![feature(generators, generator_trait)]
 
 use std::ops::{Generator, GeneratorState};
+use std::pin::*;
 
-pub struct GeneratorIteratorAdapter<G>(pub G);
+pub struct GeneratorIteratorAdapter<G: Generator + Unpin>(pub G);
 
-impl<G> Iterator for GeneratorIteratorAdapter<G>
-where
-    G: Generator<Return = ()>,
+impl<G: Generator + Unpin> Iterator for GeneratorIteratorAdapter<G>
 {
     type Item = G::Yield;
 
     fn next(&mut self) -> Option<Self::Item> {
-        match unsafe { self.0.resume() } {
+        match { Pin::new(&mut self.0).resume() } {
             GeneratorState::Yielded(x) => Some(x),
             GeneratorState::Complete(_) => None,
         }
@@ -21,7 +20,7 @@ where
 pub trait GeneratorIterator: Generator<Return = ()> {
     fn iter<T: Sized>(self) -> GeneratorIteratorAdapter<Self>
     where
-        Self: Generator<Yield = T, Return = ()> + Sized,
+        Self: Generator<Yield = T, Return = ()> + Sized + Unpin,
     {
         GeneratorIteratorAdapter(self)
     }
