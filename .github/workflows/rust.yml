@@ -20,12 +20,10 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: check
-      - name: Run cargo build
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-      - name: Run cargo build
+          arguments: --verbose
+      - name: Run cargo test
         uses: actions-rs/cargo@v1
         with:
           command: test
+          arguments: --verbose
 
