@@ -1,5 +1,7 @@
 # simple_generators
 
+![](https://github.com/vova616/simple_generators/workflows/Rust/badge.svg)
+    
 A library that contains a macro for a simpler generator->iterator creation
 
 ## Usage
