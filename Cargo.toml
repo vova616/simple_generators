@@ -1,6 +1,6 @@
 [package]
 name = "simple_generators"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Vova <vova616@gmail.com>"]
 edition = "2018"
 description = "making work with generators simpler"
