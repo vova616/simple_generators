@@ -3,6 +3,8 @@ name = "simple_generators_macros"
 version = "0.1.3"
 authors = ["Vova <vova616@gmail.com>"]
 edition = "2021"
+description = "helper crate for simple_generators, containing the macro"
+license = "MIT"
 
 [lib]
 proc-macro = true
