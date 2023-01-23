@@ -1,5 +1,5 @@
 [package]
-name = "adapter"
+name = "simple_generators_adapter"
 version = "0.1.3"
 authors = ["Vova <vova616@gmail.com>"]
 edition = "2021"
