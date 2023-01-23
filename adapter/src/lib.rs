@@ -5,8 +5,7 @@ use std::pin::*;
 
 pub struct GeneratorIteratorAdapter<G: Generator + Unpin>(pub G);
 
-impl<G: Generator + Unpin> Iterator for GeneratorIteratorAdapter<G>
-{
+impl<G: Generator + Unpin> Iterator for GeneratorIteratorAdapter<G> {
     type Item = G::Yield;
 
     fn next(&mut self) -> Option<Self::Item> {

@@ -7,13 +7,14 @@ A library that contains a macro for a simpler generator->iterator creation
 ## Usage
 
 Use latest nightly
-Didn't yet publish to crates.io so
 
-Add this to your `Cargo.toml`:
-
+```
+cargo add simple_generators
+```
+or:
 ```toml
 [dependencies]
-simple_generators = {version="0.1.1", git = "https://github.com/vova616/simple_generators"}
+simple_generators = { version="0.1.3" }
 ```
 
 example:
