@@ -7,5 +7,5 @@ description = "making work with generators simpler"
 license = "MIT"
 
 [dependencies]
-adapter = { path = "adapter", version = "*" }
-macros = { path = "macros", version = "*" }
+adapter = { path = "./adapter", version = "*" }
+macros = { path = "./macros", version = "*" }
