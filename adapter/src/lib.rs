@@ -1,28 +1,28 @@
-#![feature(generators, generator_trait)]
+#![feature(coroutines, coroutine_trait, stmt_expr_attributes)]
 
-use std::ops::{Generator, GeneratorState};
+use std::ops::{Coroutine, CoroutineState};
 use std::pin::*;
 
-pub struct GeneratorIteratorAdapter<G: Generator + Unpin>(pub G);
+pub struct GeneratorIteratorAdapter<G: Coroutine + Unpin>(pub G);
 
-impl<G: Generator + Unpin> Iterator for GeneratorIteratorAdapter<G> {
+impl<G: Coroutine + Unpin> Iterator for GeneratorIteratorAdapter<G> {
     type Item = G::Yield;
 
     fn next(&mut self) -> Option<Self::Item> {
         match { Pin::new(&mut self.0).resume(()) } {
-            GeneratorState::Yielded(x) => Some(x),
-            GeneratorState::Complete(_) => None,
+            CoroutineState::Yielded(x) => Some(x),
+            CoroutineState::Complete(_) => None,
         }
     }
 }
 
-pub trait GeneratorIterator: Generator<Return = ()> {
+pub trait GeneratorIterator: Coroutine<Return = ()> {
     fn iter<T: Sized>(self) -> GeneratorIteratorAdapter<Self>
     where
-        Self: Generator<Yield = T, Return = ()> + Sized + Unpin,
+        Self: Coroutine<Yield = T, Return = ()> + Sized + Unpin,
     {
         GeneratorIteratorAdapter(self)
     }
 }
 
-impl<I: Generator<Return = ()>> GeneratorIterator for I {}
+impl<I: Coroutine<Return = ()>> GeneratorIterator for I {}

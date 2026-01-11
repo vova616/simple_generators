@@ -1,4 +1,4 @@
-#![feature(generators, generator_trait)]
+#![feature(coroutines, coroutine_trait, stmt_expr_attributes)]
 
 use simple_generators::*;
 
@@ -34,7 +34,8 @@ fn gen_macro(n: u64) -> impl Iterator<Item = u64> {
 }
 
 fn gen_iter(n: u64) -> impl Iterator<Item = u64> {
-    (move || {
+    (#[coroutine]
+    move || {
         let mut num = 0;
         while num < n {
             yield num;
@@ -45,13 +46,16 @@ fn gen_iter(n: u64) -> impl Iterator<Item = u64> {
 }
 
 fn gen_adapter(n: u64) -> impl Iterator<Item = u64> {
-    GeneratorIteratorAdapter(move || {
-        let mut num = 0;
-        while num < n {
-            yield num;
-            num += 1;
-        }
-    })
+    GeneratorIteratorAdapter(
+        #[coroutine]
+        move || {
+            let mut num = 0;
+            while num < n {
+                yield num;
+                num += 1;
+            }
+        },
+    )
 }
 
 struct Foo {
