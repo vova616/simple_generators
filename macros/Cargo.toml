@@ -1,8 +1,8 @@
 [package]
 name = "simple_generators_macros"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Vova <vova616@gmail.com>"]
-edition = "2021"
+edition = "2024"
 description = "helper crate for simple_generators, containing the macro"
 license = "MIT"
 
@@ -12,4 +12,4 @@ proc-macro = true
 [dependencies]
 syn = { version = "2.0.114", features = ["full"] }
 quote = "1.0.43"
-simple_generators_adapter = { path = "../adapter", version = "0.2.0" }
+simple_generators_adapter = { path = "../adapter", version = "0.2.1" }

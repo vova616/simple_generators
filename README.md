@@ -14,13 +14,13 @@ cargo add simple_generators
 or:
 ```toml
 [dependencies]
-simple_generators = { version="0.1.3" }
+simple_generators = { version="0.2.1" }
 ```
 
 example:
 
 ```rust
-#![feature(generators, generator_trait)]
+#![feature(coroutines, coroutine_trait, stmt_expr_attributes)]
 
 use simple_generators::*;
 
@@ -51,7 +51,7 @@ struct Foo {
 
 impl Foo {
     #[generator]
-    fn test_macro<'a>(&'a self) -> impl Iterator<Item = u64> + 'a {
+    fn test_macro(&self) -> impl Iterator<Item = u64>  {
         for item in &self.vec {
             yield *item;
         }
